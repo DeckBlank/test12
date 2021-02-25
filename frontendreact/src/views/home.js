@@ -1,14 +1,13 @@
 import React , { useEffect }  from 'react'
 import {  Link} from 'react-router-dom'
 import Input from '../components/form/input'
+import Productos from './productos'
 
 function Home (){
     useEffect( () => {
         import('../utils/dom').then(({myForm})=>{
-            
         })
-      }, []) // este efecto se ejecuta sólo al montarse el componente   
-      
+      }, []) // este efecto se ejecuta sólo al montarse el componente 
       const inputs = [
         {
             id:'id',
@@ -69,6 +68,9 @@ function Home (){
                 {/* </button> */}
             </Link>
         </div>
+        <br/>
+        <br/>
+        {<Productos></Productos>}
         <br/>
         <br/>
     </div>

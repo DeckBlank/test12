@@ -1,10 +1,19 @@
 import React,{useEffect,useState,Fragment} from 'react'
 import { query } from '../utils/query'
+import io from 'socket.io-client';
+const socket = io(process.env.URL,{path:'/socket.io'});
 
 
 function Productos(){
     const [productos, setState] = useState([])
     const [error, setHasError] = useState(false)
+    socket.on('connect', (message) =>  {
+        console.log(6,message)
+        let sessionID = socket.id;
+        console.log(sessionID);
+        //messages.appendChild(msg)
+        
+      })
     useEffect(async () => {
         let respuesta = await query('/api/productos','get',{})
         console.log(respuesta);
@@ -14,9 +23,15 @@ function Productos(){
             setState(respuesta)
             console.log(productos,error);
         }
-        
+       
         
     }, [])
+    
+    socket.on('mensaje', (payload) =>{
+        console.log(payload,setState)
+        setState(payload)
+        productos = payload
+    }) 
     return(
         <main className="content">
             <div className="">
