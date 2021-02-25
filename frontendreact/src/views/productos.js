@@ -5,33 +5,27 @@ const socket = io(process.env.URL,{path:'/socket.io'});
 
 
 function Productos(){
+    let algo = []
     const [productos, setState] = useState([])
     const [error, setHasError] = useState(false)
     socket.on('connect', (message) =>  {
-        console.log(6,message)
         let sessionID = socket.id;
-        console.log(sessionID);
-        //messages.appendChild(msg)
-        
-      })
+        console.log(`Sesion: ${sessionID}`);
+      },[productos])
     useEffect(async () => {
         let respuesta = await query('/api/productos','get',{})
-        console.log(respuesta);
         if(respuesta.error){
             setHasError(respuesta)
         }else{
             setState(respuesta)
-            console.log(productos,error);
         }
-       
-        
     }, [])
-    
     socket.on('mensaje', (payload) =>{
-        console.log(payload,setState)
+        algo = payload
         setState(payload)
-        productos = payload
+        setHasError(false)
     }) 
+       
     return(
         <main className="content">
             <div className="">

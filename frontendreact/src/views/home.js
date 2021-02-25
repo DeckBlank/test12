@@ -61,6 +61,9 @@ function Home (){
         </form>
         <br/>
         <br/>
+        {<Productos></Productos>}
+        <br/>
+        <br/>
         <div className="row">
             <Link className="btn btn-warning" to="/productos">
                 {/* <button  > */}
@@ -68,9 +71,6 @@ function Home (){
                 {/* </button> */}
             </Link>
         </div>
-        <br/>
-        <br/>
-        {<Productos></Productos>}
         <br/>
         <br/>
     </div>
