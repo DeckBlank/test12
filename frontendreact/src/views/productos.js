@@ -36,7 +36,7 @@ function Productos(){
                 <table className="table table-dark table-striped" >
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Foto</th>
@@ -55,7 +55,7 @@ function Productos(){
                         productos.map((producto,i)=>{
                             return(
                                 <tr >
-                                    <td scope="row">{i+1}</td>
+                                    <td scope="row">{producto.id}</td>
                                     <td>{producto.title}</td>
                                     <td>{producto.price}</td>
                                     <td>
