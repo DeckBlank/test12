@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import { BrowserRouter , Switch , Router, Route, Link} from 'react-router-dom'
 
 import Productos from '../views/productos'
 import Home from '../views/home'
@@ -11,11 +11,13 @@ function Main(){
   
     return (
         <main className="content">
-            <Router>
+            <BrowserRouter>
+                <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/productos" component={Productos}/>
-                    {/* <Route  component={PageNotFound}/> */}
-            </Router>
+                    <Route  component={PageNotFound}/>
+                </Switch>
+            </BrowserRouter>
         </main>
             )
         
